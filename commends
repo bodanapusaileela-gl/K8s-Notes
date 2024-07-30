@@ -1,0 +1,133 @@
+  apt install awscli
+    2  apt update
+    3  clear
+    4  apt install aws-cli
+    5  apt upgrade
+    6  aws --version
+    7  aws -version
+    8  apt install awscli
+    9  aws configure
+   10  clear
+   11  ls -l
+   12  ls -la
+   13  cd .aws/
+   14  ls
+   15  cat  credentials
+   16  cat config
+   17  ls -la
+   18  curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.8/2024-04-19/bin/linux/arm64/kubectl
+   19  ll
+   20  chmod +x ./kubectl
+   21  mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+   22  echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+   23  ll
+   24  kubectl version --client
+   25  pwd
+   26  cd
+   27  cd bin
+   28  ls
+   29  kubectl version --client
+   30  export PATH=$HOME/bin:$PATH
+   31  kubectl version --client
+   32  ls
+   33  rm -rf kubectl
+   34  cd
+   35  cd .aws
+   36  ls
+   37  rm -rf kubectl
+   38  cd
+   39  curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.8/2024-04-19/bin/linux/amd64/kubectl
+   40  chmod +x ./kubectl
+   41  mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+   42  echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+   43  kubectl version --client
+   44  curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+   45  ls
+   46  tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+   47  tar -xzf eksctl_.tar.gz -C /tmp
+   48  ls
+   49  rm -rf eksctl_.tar.gz
+   50  ls
+   51  # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
+   52  ARCH=amd64
+   53  PLATFORM=$(uname -s)_$ARCH
+   54  curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+   55  # (Optional) Verify checksum
+   56  curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
+   57  tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+   58  sudo mv /tmp/eksctl /usr/local/bin
+   59  ekctl -version
+   60  eks version
+   61  eksctl  version
+   62  docker --version
+   63  apt install docker.io
+   64  apt update
+   65  eksctl create cluster --name=eksdemo1                       --region=ap-south-1                       --zones=ap-south-1a,ap-south-1b                       --without-nodegroup
+   66  eksctl upgrade cluster --name my-cluster --version 1.28 --approve
+   67  ls
+   68  eksctl upgrade cluster --name eksdemo1 --version 1.28 --approve
+   69  eksctl upgrade cluster --name eksdemo1 --version 1.28 --approve --region ap-south-1
+   70  ls
+   71  rm -rf kubectl
+   72  cd bin/
+   73  ls
+   74  rm -rf kubectl
+   75  ls
+   76  cd
+   77  curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.30.0/2024-05-12/bin/linux/amd64/kubectl
+   78  chmod +x ./kubectl
+   79  mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+   80  echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+   81*
+   82  eksctl get cluster
+   83  eksctl get cluster --region ap-south-1
+   84  eksctl get nodegroup --cluster=eksdemo1
+   85  aws configure
+   86  eksctl get nodegroup --cluster=eksdemo1
+   87  eksctl utils associate-iam-oidc-provider     --region ap-south-1     --cluster eksdemo1     --approve
+   88  eksctl create nodegroup --cluster=eksdemo1                        --region=ap-south-1                        --name=eksdemo1-ng-public1                        --node-type=t3.medium                        --nodes=2                        --nodes-min=2                        --nodes-max=4                        --node-volume-size=20                        --ssh-access                        --ssh-public-key=docker                        --managed                        --asg-access                        --external-dns-access                        --full-ecr-access                        --appmesh-access                        --alb-ingress-access
+   89  kubectl get nodes
+   90  eksctl get nodes
+   91  eksctl get nodegroup
+   92  eksctl get nodegroup --cluster=eksdemo1
+   93  kubectl get nodes
+   94  kubectl version --classic
+   95  kubectl version --client
+   96  ls
+   97  ls -l
+   98  history
+   99  aws eks update-kubeconfig --region ap-south-1 --name eksdemo1
+  100  kubectl get nodes
+  101  ls
+  102  cd kubectl
+  103  ls -l
+  104  cat /root/.kubeconf
+  105  cd /root
+  106*
+  107*
+  108  ls
+  109  cat config
+  110  vi config
+  111  aws eks update-kubeconfig --region ap-south-1 --name eksdemo1
+  112  kubectl version --client
+  113  kubectl get nodes
+  114  cat config
+  115  vi config
+  116  kubectl get nodes
+  117  aws eks update-kubeconfig --region ap-south-1 --name eksdemo1
+  118  kubectl get nodes
+  119  cat config
+  120  vi config
+  121  kubectl get nodes
+  122  aws eks update-kubeconfig --region ap-south-1 --name eksdemo1
+  123  kubectl get nodes
+  124  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  125  chmod +x kubectl
+  126  sudo mv kubectl /usr/local/bin/kubectl
+  127  kubectl get nodes
+  128  cat config
+  129  vi config
+  130  history
+  131  cd /root
+  132  ls
+
