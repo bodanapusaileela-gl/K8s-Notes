@@ -1,0 +1,125 @@
+1  yum update
+    2  yum update -y
+    3  yum install docker
+    4  aws --version
+    5  curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.30.0/2024-05-12/bin/linux/amd64/kubectl
+    6  chmod +x ./kubectl
+    7  mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+    8  echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+    9  kubectl version --client
+   10  # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
+   11  ARCH=amd64
+   12  PLATFORM=$(uname -s)_$ARCH
+   13  curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+   14  # (Optional) Verify checksum
+   15  curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
+   16  tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+   17  sudo mv /tmp/eksctl /usr/local/bin
+   18  eksctl version
+   19  aws eks update-kubeconfig --name eksdemo1 --region ap-south-1
+   20  aws configure
+   21  aws s3 ls
+   22  eksctl get cluster
+   23  kubectl get nodes
+   24  aws eks update-kubeconfig --name eksdemo1 --region ap-south-1
+   25  kubectl get nodes
+   26  eksctl utils associate-iam-oidc-provider     --region us-east-1     --cluster eksdemo1     --approve
+   27  eksctl utils associate-iam-oidc-provider     --region ap-south-1     --cluster eksdemo1     --approve
+   28  kubectl get nodes
+   29  aws configure
+   30  kubectl get nodes
+   31  kubectl get nodes -o wide
+   32  kubectl run subbu-pod --image stacksimplify/kubenginx:1.0.0 --generator=run-pod/v1
+   33  kubectl run subbu-pod --image stacksimplify/kubenginx:1.0.0
+   34  kubectl get pods
+   35  kubectl describe pod subbu-pod
+   36  eksctl get nodegroup --cluster=eksdemo1
+   37  kubectl get pods
+   38  watch kubectl get pods
+   39  kubectl describe pod subbu-pod
+   40  kubectl logs subbu-pod
+   41  kubectl get nodes
+   42  kubectl get nodes -o wide
+   43  kubectl describe node ip-192-168-25-128.ap-south-1.compute.internal
+   44  kubectl taint node ip-192-168-25-128.ap-south-1.compute.internal
+   45  kubectl taint nodes ip-192-168-25-128.ap-south-1.compute.internal node.kubernetes.io/unschedulable:NoSchedule-
+   46  kubectl get nodes -o wide
+   47  kubectl get pods
+   48  kubectl describe node ip-192-168-25-128.ap-south-1.compute.internal
+   49  kubectl taint nodes ip-192-168-25-128.ap-south-1.compute.internal node.kubernetes.io/unschedulable:Schedule-
+   50  kubectl get cm -n kube-system aws-auth -o yaml
+   51  kubectl get nodes
+   52  kubectl taint nodes ip-192-168-25-128.ap-south-1.compute.internal node.kubernetes.io/unschedulable:false
+   53  kubectl taint node ip-192-168-25-128.ap-south-1.compute.internal node.kubernetes.io/unschedulable:NoSchedule-
+   54  kubectl get pods
+   55  kubectl get nodes
+   56  kubectl taint node ip-192-168-25-128.ap-south-1.compute.internal node.kubernetes.io/unschedulable:NoSchedule
+   57  kubectl get nodes
+   58  kubectl cordon ip-192-168-25-128.ap-south-1.compute.internal
+   59  kubectl uncordon ip-192-168-25-128.ap-south-1.compute.internal
+   60  kubectl get nodes
+   61  kubectl get pods
+   62  kubectl cordon ip-192-168-25-128.ap-south-1.compute.internal
+   63  kubectl get pods
+   64  kubectl get nodes
+   65  kubectl get pods -o wide
+   66  kubectl get nodes
+   67  kubectl uncordon ip-192-168-25-128.ap-south-1.compute.internal
+   68  kubectl uncordon ip-192-168-25-245.ap-south-1.compute.internal
+   69  kubectl get nodes
+   70  kubectl uncordon ip-192-168-25-245.ap-south-1.compute.internal
+   71  kubectl uncordon ip-192-168-53-245.ap-south-1.compute.internal
+   72  kubectl get nodes
+   73  kubectl get pods
+   74  kubectl describe pod subbu-pod
+   75  kubectl get pods
+   76  kubectl delete pod subbu-pod
+   77  kubectl run subbu-pod --image stacksimplify/kubenginx:1.0.0
+   78  kubectl get pods
+   79  kubectl run my-first-pod --image stacksimplify/kubenginx:1.0.0 --generator=run-pod/v1
+   80  kubectl run --generator=run-pod/v1 nginx1 --image=nginx
+   81  kubectl run --help
+   82  kubectl run my-first-pod --image stacksimplify/kubenginx:1.0.0
+   83  kubectl expose pod my-first-pod  --type=NodePort --port=80 --name=my-first-service
+   84  kubectl get svc
+   85  kubectl get pods -o wide
+   86  kubectl get nodes
+   87  kubectl get pods
+   88  kubectl get svc
+   89  kubectl get nodes -o wide
+   90  kubectl get pods -o wide
+   91  kubectl logs -f my-first-pod
+   92  kubectl exec -it my-first-pod -- mkdir /root/Balu
+   93  kubectl exec -it my-first-pod --/bin/bash
+   94  kubectl exec -it my-first-pod -- /bin/bash
+   95  kubectl get pods
+   96  kubectl get pod my-first-pod -o yaml
+   97  kubectl delete svc my-first-service
+   98  kubectl get svc
+   99  kubectl delete pod my-first-pod
+  100  kubectl get pods
+  101  kubectl get pod subbu-pod -o yaml > pod.yaml
+  102  ls
+  103  cat pod.yaml 
+  104  kubectl delete pod subbu-pod
+  105  vi replica.yaml
+  106  kubectl create -f replica.yaml 
+  107  kubectl get rs
+  108  kubectl get pods
+  109  kubectl delete pod my-helloworld-rs-2kshd
+  110  kubectl get pods
+  111  vi replica.yaml 
+  112  vim replica.yaml 
+  113  nano replica.yaml 
+  114  cat replica.yaml 
+  115  kubectl get pods
+  116  kubectl apply -f replica.yaml 
+  117  vi replica.yaml 
+  118  kubectl apply -f replica.yaml 
+  119  vi replica.yaml 
+  120  kubectl apply -f replica.yaml 
+  121  kubectl get pods
+  122  kubectl delete -f replica.yaml 
+  123  kubectl get pods
+  124  kubectl get rs
+  125  history
